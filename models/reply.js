@@ -15,4 +15,4 @@ var ReplySchema = new Schema({
 ReplySchema.index({create_time: -1});
 ReplySchema.index({topic_id: 1, create_time: -1});
 
-module.exports = mongoose.model('reply',ReplySchema);
+module.exports = ReplySchema;

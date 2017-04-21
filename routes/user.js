@@ -88,10 +88,6 @@ router.post('/register', async (ctx, next) => {
  */
 router.get('/setting', async (ctx, next) => {
   let User = ctx.model('user');
-  // let test = mongoose.model('user', users);
-  // console.log(test === User)
-  // console.log('test',test.test())
-  // console.log('User',User.test())
   let user = await User.findOneQ({
     username: ctx.state.username
   });
@@ -170,7 +166,6 @@ router.post('/setpass', checkLogin, async (ctx, next) => {
  */
 router.get('/:username', checkLogin, async (ctx, next) => {
   let username = ctx.params.username;
-  console.log('username',username)
   let User = ctx.model('user');
   let user = await User.findOneQ({
     username: ctx.params.username
@@ -199,8 +194,6 @@ router.get('/:username', checkLogin, async (ctx, next) => {
     reply.topic = await Topic.findById(reply.topic_id);
     return reply;
   }));
-  console.log('reply[0]',replys[0])
-  console.log('replys',replys[0].topic)
   await ctx.render('user/home', {
     title: username + '的个人主页',
     userinfo: user,
@@ -271,10 +264,7 @@ router.get('/test/test', async (ctx) => {
     return reply;
   });
   replies = await Promise.all(promises);
-
-
   let date2 = new Date();
-  console.log('run-time',date2-date1);
   ctx.body = results;
 })
 module.exports = router;
