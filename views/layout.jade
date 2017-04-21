@@ -1,0 +1,32 @@
+doctype html
+html(lang="zh_CN")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title + ' - ' + sitename
+    != loader('/stylesheets/min/common.min.css').css('/stylesheets/common.styl').css('/stylesheets/index.styl').css('/stylesheets/editor.css').done(null,null,false)
+    block css
+  body
+    header#header
+      .wp
+        a.logo(href="/") <b>Easy</b> Club 
+        ul.user-nav
+          - if (username)
+            li: a(href="/") 首页
+            li 欢迎你：#{username}
+            li: a(href="/user/setting") 设置
+            li: a(href="/user/logout") 退出
+          - else
+            li: a(href="/") 首页
+            li: a(href="/user/register") 注册
+            li: a(href="/user/login") 登录
+    .wp
+      block content
+    footer#footer
+      .wp 
+        p EasyClub - 基于nodejs koa2的轻量级论坛程序
+        p author: song 
+          a(href="https://github.com/k-dylan/easyclub/" target="_blank") 源码地址
+    script(src="/javascripts/lib/jquery.min.js")
+    block script

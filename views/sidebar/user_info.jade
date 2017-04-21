@@ -1,0 +1,15 @@
+
+- if(username)
+  .panel
+    .panel-hd 个人信息
+    .panel-bd.user-info
+      .photo: a(href='/user/#{user.username}')
+        img(src=user.avatar || '/images/photo.png', alt=userinfo.username, width="90" height="90")
+      .info 
+        h3: a(href="/user/#{user.username}")= userinfo.username
+        p 话题：
+          a(href="/user/#{user.username}/topic")= userinfo.topic_count
+        p 回复：
+          a(href="/user/#{user.username/reply}")= userinfo.reply_count
+      p.clearfix= userinfo.signature
+        

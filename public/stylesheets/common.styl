@@ -1,0 +1,374 @@
+@import 'nib'
+@import './public/stylesheets/variable.styl'
+// 统一浏览器默认样式
+normalize-css() 
+
+// 基本样式
+body 
+  background-color #f0f0f0
+  margin 0
+  font 14px/2 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei",sans-serif
+
+a
+  color #555
+  &:link
+    text-decoration none 
+  &:hover
+    color $main_color
+
+ul 
+  list-style none
+  margin 0
+  padding-left 0
+  
+h1
+h2
+h3
+h4
+h5
+h6 
+p
+  margin 0
+  margin 0
+
+// input 禁用状态鼠标形状
+html input[disabled]
+button[disabled]
+  cursor not-allowed
+
+// 通用样式
+.small  // 小号字体
+  font-size .8em
+.hide  // 隐藏
+  display none
+.clearfix  // 清除浮动
+  zoom 1
+  &:after 
+    display block
+    content ''
+    clear both
+    visibility hidden
+    height 0 
+.text  // 字体颜色
+  &-error  
+    color #c40000
+  &-main
+    color $main_color
+  &-muted
+    color #888
+  //  默认文字样式
+  &-normal
+    font-style normal
+    font-weight normal
+  &-delete
+    text-decoration line-through
+  // 垂直居中
+  &-middle
+    vertical-align middle
+.w-auto // 还原默认宽度
+  width auto!important
+// 浮动
+.float
+  &-l
+    float left
+  &-r
+    float right
+    // 间隔
+.interval 
+  &-r
+    margin-right .5em
+  &-l
+    margin-left .5em
+// 组件
+
+// 标签
+.label
+  display inline
+  border-radius .25em 
+  padding .2em .5em 
+  text-align center
+  font-weight normal
+  &-primary
+    background-color $main_color
+    color #efefef 
+    &:hover
+      background-color darken(@background-color, 5)  
+      color #fff
+  &-default
+    background-color #e5e5e5
+    color #999
+    &:hover
+      background-color darken(@background-color, 5)  
+      color #fff
+// alert 提示框
+.alert
+  border 1px solid #ccc
+  padding 10px 20px
+  margin-bottom 1em
+  &-success
+    border-color #d6e9c6
+    background-color #dff0d8
+    color #468847
+  &-error
+    color #b94a48
+    background-color #f2dede
+    border-color #eed3d7
+
+// panel 面板
+.panel
+  border 1px solid #ddd
+  background-color #fff
+  box-shadow 0px 1px 1px 0px rgba(#ddd,.3)
+  margin-bottom 10px
+  border-radius 5px
+  &-hd
+    background-color #f5f5f5
+    border-radius 5px 5px 0 0 
+    border-bottom 1px solid #ddd
+    height 40px
+    line-height @height
+    font-size 1.1em
+    padding-left 1em
+  &-bd
+    padding 1em
+    border-radius bottom 5px
+  &-danger
+    border-color #ebccd1
+    box-shadow 0px 1px 1px 0px rgba(@border-color,.3)
+    .panel-hd 
+      color #a94442
+      background-color #f2dede
+      border-color @border-color
+
+ // 列表
+.list
+  // list容器
+  &-bd 
+    padding 0 0 .5em 0
+    .list>li
+      padding-left 1em
+      padding-right 1em
+  li
+    padding-top .5em
+    padding-bottom .5em
+    border-bottom 1px solid #eee
+    &:last-child
+      border-bottom none
+  &-striped
+    li:nth-child(2n)
+        background-color #f9f9f9
+// page 分页
+.page
+  margin-top 1em
+  padding-left 1em
+  li
+    display inline-block
+    border 1px solid #ddd
+    border-right none
+    &>a 
+    &>span
+      display block
+      padding 0 .5em
+    &>span
+      color $main_color
+    &:first-child
+      border-radius left 3px
+    &:last-child
+      border-right 1px solid #ddd
+      border-radius right 3px 
+
+// form 表单
+.form 
+  .control-label
+      display inline-block
+  &-group
+    margin-bottom 1em
+  &-help
+    vertical-align middle
+  &-control
+    border 1px solid #ddd
+    border-radius 3px
+    padding 5px 8px
+    height 34px
+    width 100%
+    box-shadow inset 0 1px 1px rgba(0,0,0,0.075)
+    vertical-align middle
+    box-sizing border-box
+    &:focus
+      border-color rgba($main_color, .8)
+      box-shadow 0 1px 2px 0 rgba($main_color, .5)
+      outline 0
+    textarea&
+      min-height 80px
+      vertical-align top
+  // 水平表单
+  @media screen and (min-width:960px)
+    &-horizontal 
+      .control-label
+        width 200px
+        text-align right
+      .form-control
+        width 300px
+
+// btn 按钮
+.btn 
+  border 1px solid #ddd
+  border-radius 4px
+  padding 3px 12px
+  background-color #fff
+  display inline-block
+  &:hover
+    background-color #ddd
+  &-primary
+    background-color #08c
+    border-color #08c
+    color #fff
+    &:hover
+      background-color darken(@background-color, 10)
+      color @color
+    &[disabled] 
+      background-color desaturate(@background-color, 60%)
+      border-color desaturate(@border-color, 60%)
+
+
+  
+// 框架布局
+.wp
+  max-width 1200px
+  margin 0 auto
+  padding 10px 
+  &-left
+    margin-right 310px
+  &-right
+    float right
+    width 300px
+  @media screen and (max-width:960px)
+    &-right
+      width 200px
+    &-left 
+      margin-right 210px
+  @media screen and (max-width:700px)
+    &-right
+      display none
+    &-left 
+      margin-right auto
+
+
+
+//  顶部
+#header
+  background-color #444
+  height 50px  
+  color #fff
+  .wp
+    padding-top 0
+    padding-bottom 0
+  .logo
+    font-size 1.5em
+    line-height @height
+    color #fff
+    b
+      color $main_color
+    
+  .user-nav
+    float right
+    margin 0
+    line-height @height
+    li
+      display inline-block
+      a
+        color #fff
+        &:hover
+          color $main_color
+      &:after 
+        content '|'
+        color darken(@color, 20)
+        padding 0 .5em
+      &:last-child:after
+        display none
+
+// 底部
+#footer
+  margin-top 1em
+  p 
+    margin 0 
+    color #999
+    font-size .9em        
+
+    
+// 错误提示页面
+.error
+  &-box 
+    width 50%
+    margin 10px auto
+    .jump
+      font-size .8em
+      color #888
+      &:hover 
+        color #d00
+ 
+ // modal 
+.modal 
+  position fixed
+  z-index 9999
+  width 560px
+  top 0
+  left 50%
+  display none
+  margin-left - (@width / 2)
+  background-color #fff
+  border 1px solid #eee
+  border-radius 5px
+  opacity 0
+  transition top .3s linear, opacity .3s linear
+  &-header 
+    padding 9px 15px 
+    border-bottom 1px solid #eee
+    border-radius 5px 5px 0 0 
+    .close 
+      float right 
+      line-height 1 
+      border none 
+      background none
+      font-size 20px 
+      text-shadow 0 1px 0 #fff
+      opacity .2
+  &-body 
+    padding 10px
+    position relative
+  &.show 
+    top 100px
+    opacity 1
+  &-mask 
+    position fixed 
+    top 0
+    left 0
+    height 100%
+    width 100% 
+    z-index 9998
+    background-color #000
+    opacity 0
+    transition opacity .2s linear 
+    &.show
+      opacity .8
+  &-footer 
+    border-top 1px solid #eee
+    padding 10px
+    text-align right
+  @media screen and (max-width:420px)
+    & 
+      width 300px
+      margin-left -150px
+
+// breadcrumb 面包屑导航
+.breadcrumb 
+  overflow hidden
+  li
+    float left
+    &:before 
+      content "/"
+      padding 0 .5em
+      color #999
+    &:first-child:before 
+      display none     
+

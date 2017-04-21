@@ -1,0 +1,31 @@
+
+extends layout
+
+block content
+  .wp-right
+    include ./sidebar/user_info
+    include ./sidebar/create_topic
+    include ./sidebar/score-rank
+  .wp-left
+    .panel.index
+      .panel-hd 
+        div.nav
+          a(href="/" class= current_tag === 'all' ? 'active': '') 全部
+          each tag in tags
+            a(href="/?tag=#{tag}" class= current_tag === tag ? 'active': '')= tag
+             
+      .panel-bd
+        ul.list
+          each topic in topics
+            li
+              .count #{topic.reply_count} / #{topic.visit_count}
+              h4: a(href="/topic/#{topic._id}")= topic.title
+              .info
+                - if (topic.tag)
+                  span.tag: a(href="/?tag=#{topic.tag}")= topic.tag
+                span.author= topic.author.username
+                span.date= formatTime(topic.create_time)
+        include ./includes/page
+            
+              
+                  
